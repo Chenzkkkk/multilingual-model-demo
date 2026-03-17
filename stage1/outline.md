@@ -1,0 +1,6 @@
+- 计算机对语言的表示：从 one-hot 走向分布式表示
+- 静态词向量：Word2Vec, GloVe 及其局限
+- 从 RNN 到 LSTM 及 Bi-LSTM 阶段的模型：ELMo 开启上下文表示时代
+- 注意力机制与 Transformer：彻底改变了序列表示
+- BERT：Masked Language Modeling, Next Sentence Prediction 带来的突破
+- mBERT：单模型跨语言零样本迁移的奇迹

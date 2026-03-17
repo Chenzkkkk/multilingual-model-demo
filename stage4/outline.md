@@ -1,0 +1,5 @@
+- SFT 和 RLHF 在多语言模型中的应用
+- 小参数模型的崛起：Qwen, Llama 3 等
+- 闭源旗舰 API：GPT-4o, Claude 3
+- 多模态多语言能力：CLIP 及演进
+- 区域语言及特殊语系：AfroLM, SeaLLM

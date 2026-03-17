@@ -1,0 +1,6 @@
+{
+    "model": "ELMo",
+    "success": true,
+    "is_placeholder": true,
+    "result": "ELMo 基于 Bi-LSTM 提取了上下文化词向量，作为第一阶段多语言自然语言处理的关键基石。本地不提供真跑，仅作说明性占位。"
+}

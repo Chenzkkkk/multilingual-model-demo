@@ -1,0 +1,76 @@
+{
+    "stage": 1,
+    "results": [
+        {
+            "model": "word2vec",
+            "success": true,
+            "is_placeholder": false,
+            "result": {
+                "query": "你好",
+                "similar_words": [
+                    {
+                        "word": "世界",
+                        "score": 0.43408331274986267
+                    },
+                    {
+                        "word": "embeddings",
+                        "score": 0.22019535303115845
+                    },
+                    {
+                        "word": "hello",
+                        "score": 0.20956431329250336
+                    }
+                ]
+            }
+        },
+        {
+            "model": "ELMo",
+            "success": true,
+            "is_placeholder": true,
+            "result": "ELMo 基于 Bi-LSTM 提取了上下文化词向量，作为第一阶段多语言自然语言处理的关键基石。本地不提供真跑，仅作说明性占位。"
+        },
+        {
+            "model": "BERT",
+            "success": true,
+            "is_placeholder": true,
+            "result": "BERT 引入双向 Transformer，利用 MLM 提升了表示质量。作为纯英模型，促成了 mBERT 等多语言模型的诞生。本阶段侧重 mBERT，BERT 仅作占位。"
+        },
+        {
+            "model": "mbert",
+            "success": true,
+            "is_placeholder": false,
+            "result": {
+                "我们 去 [MASK] 玩。": [
+                    {
+                        "token_str": "玩",
+                        "score": 0.4284
+                    },
+                    {
+                        "token_str": "去",
+                        "score": 0.0751
+                    }
+                ],
+                "We are going to [MASK].": [
+                    {
+                        "token_str": "go",
+                        "score": 0.2081
+                    },
+                    {
+                        "token_str": "do",
+                        "score": 0.1011
+                    }
+                ],
+                "Vamos a [MASK].": [
+                    {
+                        "token_str": "cargo",
+                        "score": 0.0146
+                    },
+                    {
+                        "token_str": "R",
+                        "score": 0.0136
+                    }
+                ]
+            }
+        }
+    ]
+}

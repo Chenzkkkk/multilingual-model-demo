@@ -1,0 +1,6 @@
+{
+    "model": "PaLM",
+    "success": true,
+    "is_placeholder": true,
+    "result": "Google 的庞大语言模型，证明了扩大参数规模能极大提升多语言推理能力。无开源权重，仅作说明。"
+}

@@ -1,0 +1,6 @@
+{
+    "model": "mBART",
+    "success": true,
+    "is_placeholder": true,
+    "result": "多语言 BART 架构，适合机器翻译等任务，本地模型较重，仅作说明。"
+}

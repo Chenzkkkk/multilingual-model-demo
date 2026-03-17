@@ -1,0 +1,19 @@
+{
+  "stage1_mask_filling": [
+    {"lang": "en", "text": "The capital of France is [MASK].", "expected": "paris"},
+    {"lang": "zh", "text": "中国的首都是[MASK]。", "expected": "北京"}
+  ],
+  "stage1_word_sense": [
+    {"lang": "en", "word": "bank", "sentences": [
+      "I deposited money in the bank.",
+      "We sat by the river bank."
+    ]},
+    {"lang": "zh", "word": "打", "sentences": [
+      "他打篮球很厉害。",
+      "一打鸡蛋是十二个。"
+    ]}
+  ],
+  "stage1_translation": [
+    {"en": "Hello world", "zh": "你好，世界"}
+  ]
+}

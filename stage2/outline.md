@@ -1,0 +1,4 @@
+- 多语言语料构建与词表共享
+- mBERT 的零样本跨语言迁移现象
+- XLM：引入 Translation Language Modeling (TLM)
+- XLM-R：基于 RoBERTa 架构在大规模多语言语料上的训练

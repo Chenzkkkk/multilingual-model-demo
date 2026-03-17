@@ -1,0 +1,12 @@
+Stage 3：多语言生成过渡阶段
+这一阶段的核心是：多语言模型从“共享表示”进一步走向“共享生成”。也就是从 encoder-only 的理解型预训练，转向 encoder-decoder 的 text-to-text / denoising 生成，同时开始出现更强的 decoder-only multilingual generators。
+
+这一阶段必须讲的模型：
+mBART
+mT5
+XGLM
+BLOOM
+
+可选补充模型：
+GPT-3
+PaLM

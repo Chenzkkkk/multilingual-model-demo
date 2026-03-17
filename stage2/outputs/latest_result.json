@@ -1,0 +1,47 @@
+{
+    "stage": 2,
+    "results": [
+        {
+            "model": "mBERT (Stage 2)",
+            "success": true,
+            "is_placeholder": false,
+            "result": {
+                "input": "Paris es la capital de [MASK].",
+                "output": [
+                    {
+                        "token": "París",
+                        "score": 0.7015687227249146
+                    },
+                    {
+                        "token": "Paris",
+                        "score": 0.1131427139043808
+                    }
+                ]
+            }
+        },
+        {
+            "model": "XLM-R",
+            "success": true,
+            "is_placeholder": false,
+            "result": {
+                "input": "It is a very <mask> day.",
+                "output": [
+                    {
+                        "token": "nice",
+                        "score": 0.15444475412368774
+                    },
+                    {
+                        "token": "beautiful",
+                        "score": 0.12351326644420624
+                    }
+                ]
+            }
+        },
+        {
+            "model": "XLM",
+            "success": true,
+            "is_placeholder": true,
+            "result": "XLM 引入了翻译语言模型 (TLM) 目标，在具有平行语料的跨语言理解上有重要地位。本地运行较重且已被 XLM-R 超越，故此处仅作说明性占位。"
+        }
+    ]
+}

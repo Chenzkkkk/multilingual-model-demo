@@ -1,0 +1,6 @@
+{
+    "model": "BLOOM",
+    "success": false,
+    "is_placeholder": false,
+    "result": "Cannot send a request, as the client has been closed."
+}

@@ -1,0 +1,18 @@
+{
+    "model": "XLM-R",
+    "success": true,
+    "is_placeholder": false,
+    "result": {
+        "input": "It is a very <mask> day.",
+        "output": [
+            {
+                "token": "nice",
+                "score": 0.15444475412368774
+            },
+            {
+                "token": "beautiful",
+                "score": 0.12351326644420624
+            }
+        ]
+    }
+}

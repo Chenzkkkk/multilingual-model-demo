@@ -1,0 +1,13 @@
+Stage 2：多语言 Encoder 预训练阶段
+这是真正的多语言预训练起点。核心目标是：通过共享词表、共享参数、多语言 MLM/TLM，学习一个可迁移的跨语言共享表示空间，重点服务于 NLU 和 zero-shot cross-lingual transfer。
+
+这一阶段必须讲的模型：
+mBERT
+XLM
+XLM-R
+
+可选补充模型：
+RemBERT
+InfoXLM
+MuRIL
+IndicBERT

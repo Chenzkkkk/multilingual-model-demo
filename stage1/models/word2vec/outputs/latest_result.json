@@ -1,0 +1,22 @@
+{
+    "model": "word2vec",
+    "success": true,
+    "is_placeholder": false,
+    "result": {
+        "query": "你好",
+        "similar_words": [
+            {
+                "word": "世界",
+                "score": 0.43408331274986267
+            },
+            {
+                "word": "embeddings",
+                "score": 0.22019535303115845
+            },
+            {
+                "word": "hello",
+                "score": 0.20956431329250336
+            }
+        ]
+    }
+}

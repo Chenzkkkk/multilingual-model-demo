@@ -1,0 +1,4 @@
+- 从 Encoder 向 Seq2Seq 架构的转变 (mT5, mBART)
+- 多文档、多语言的无监督生成目标
+- 走向 Decoder-only 架构 (GPT-3, PaLM 的多语言涌现)
+- 多语言开源巨星：BLOOM 与 XGLM

@@ -1,0 +1,37 @@
+{
+    "model": "mbert",
+    "success": true,
+    "is_placeholder": false,
+    "result": {
+        "我们 去 [MASK] 玩。": [
+            {
+                "token_str": "玩",
+                "score": 0.4284
+            },
+            {
+                "token_str": "去",
+                "score": 0.0751
+            }
+        ],
+        "We are going to [MASK].": [
+            {
+                "token_str": "go",
+                "score": 0.2081
+            },
+            {
+                "token_str": "do",
+                "score": 0.1011
+            }
+        ],
+        "Vamos a [MASK].": [
+            {
+                "token_str": "cargo",
+                "score": 0.0146
+            },
+            {
+                "token_str": "R",
+                "score": 0.0136
+            }
+        ]
+    }
+}

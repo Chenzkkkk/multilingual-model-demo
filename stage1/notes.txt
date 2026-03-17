@@ -1,0 +1,8 @@
+Stage 1：前史与范式奠基期
+从静态词向量走向上下文化表示，再走到 Transformer + 预训练范式；这一阶段的核心不是“多语言”，而是现代预训练范式的形成。
+
+包含模型：
+word2vec
+ELMo
+Transformer
+BERT

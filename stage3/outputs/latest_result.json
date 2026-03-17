@@ -1,0 +1,41 @@
+{
+    "stage": 3,
+    "results": [
+        {
+            "model": "mT5",
+            "success": false,
+            "is_placeholder": false,
+            "result": "Cannot send a request, as the client has been closed."
+        },
+        {
+            "model": "BLOOM",
+            "success": false,
+            "is_placeholder": false,
+            "result": "Cannot send a request, as the client has been closed."
+        },
+        {
+            "model": "mBART",
+            "success": true,
+            "is_placeholder": true,
+            "result": "多语言 BART 架构，适合机器翻译等任务，本地模型较重，仅作说明。"
+        },
+        {
+            "model": "XGLM",
+            "success": true,
+            "is_placeholder": true,
+            "result": "Facebook 提出的基于 Decoder 的多语言模型，本地运行较重，仅作说明。"
+        },
+        {
+            "model": "GPT-3",
+            "success": true,
+            "is_placeholder": true,
+            "result": "作为开启大语言模型范式的里程碑，它在少量多语言数据上展现了涌现的翻译能力，为闭源，仅作说明。"
+        },
+        {
+            "model": "PaLM",
+            "success": true,
+            "is_placeholder": true,
+            "result": "Google 的庞大语言模型，证明了扩大参数规模能极大提升多语言推理能力。无开源权重，仅作说明。"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+Stage 4：多语言 LLM 主流化与对齐阶段
+这一阶段的核心不再只是“多语言预训练”，而是多语言 LLM 的对齐与能力释放。第二篇综述的核心观点就是：当前 MLLMs 的关键问题是 alignment，而且可以系统分为 PTA（参数更新式对齐） 和 PFA（参数冻结式对齐） 两大类；同时，模型能力来自 pretraining + SFT + RLHF + prompting 的组合，而不只是预训练本身。
+
+这一阶段必须讲的模型：
+GPT-4 / GPT-4o
+Llama 3（及 3.1 / 4 作为后续）
+Qwen 2.5 / Qwen 3
+DeepSeek-V3 / R1
+Claude（作为闭源代表）
+
+国内补充固定为：
+Qwen
+DeepSeek
+Hunyuan
