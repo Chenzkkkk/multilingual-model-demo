@@ -3,16 +3,38 @@
     "success": true,
     "is_placeholder": false,
     "result": {
-        "input": "Paris es la capital de [MASK].",
-        "output": [
+        "model_info": "Multilingual BERT (2018)",
+        "task": "多语言MLM",
+        "input": "中国的首都是[MASK]。",
+        "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
+        "predictions": [
             {
-                "token": "París",
-                "score": 0.7015687227249146
+                "rank": 1,
+                "token": "都",
+                "score": 0.4771682322025299
             },
             {
-                "token": "Paris",
-                "score": 0.1131427139043808
+                "rank": 2,
+                "token": "市",
+                "score": 0.10027528554201126
+            },
+            {
+                "rank": 3,
+                "token": "京",
+                "score": 0.04381847754120827
+            },
+            {
+                "rank": 4,
+                "token": "-",
+                "score": 0.04354635998606682
+            },
+            {
+                "rank": 5,
+                "token": "省",
+                "score": 0.03496776521205902
             }
         ]
-    }
+    },
+    "user_input": "中国的首都是[MASK]。",
+    "input_type": "text"
 }

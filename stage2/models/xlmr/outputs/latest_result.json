@@ -3,16 +3,42 @@
     "success": true,
     "is_placeholder": false,
     "result": {
-        "input": "It is a very <mask> day.",
-        "output": [
+        "model_info": "XLM-RoBERTa (Facebook AI 2019)",
+        "architecture": "RoBERTa for 100+ languages",
+        "parameters": "270M",
+        "training_data": "2.5TB of filtered CommonCrawl data",
+        "task": "多语言掩码语言模型",
+        "input": "今天是一个很<mask>的日子。",
+        "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
+        "predictions": [
             {
-                "token": "nice",
-                "score": 0.15444475412368774
+                "rank": 1,
+                "token": "triste",
+                "score": 0.08652832359075546
             },
             {
-                "token": "beautiful",
-                "score": 0.12351326644420624
+                "rank": 2,
+                "token": "special",
+                "score": 0.08353183418512344
+            },
+            {
+                "rank": 3,
+                "token": "खास",
+                "score": 0.03324289619922638
+            },
+            {
+                "rank": 4,
+                "token": "interesting",
+                "score": 0.030285095795989037
+            },
+            {
+                "rank": 5,
+                "token": "importante",
+                "score": 0.02774243988096714
             }
-        ]
-    }
+        ],
+        "note": "XLM-R 仅使用大规模单语预训练就达到了超越XLM（使用平行语料）的性能"
+    },
+    "user_input": "今天是一个很<mask>的日子。",
+    "input_type": "text"
 }

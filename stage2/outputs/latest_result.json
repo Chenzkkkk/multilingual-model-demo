@@ -6,42 +6,99 @@
             "success": true,
             "is_placeholder": false,
             "result": {
-                "input": "Paris es la capital de [MASK].",
-                "output": [
+                "model_info": "Multilingual BERT (2018)",
+                "task": "多语言MLM",
+                "input": "中国的首都是[MASK]。",
+                "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
+                "predictions": [
                     {
-                        "token": "París",
-                        "score": 0.7015687227249146
+                        "rank": 1,
+                        "token": "都",
+                        "score": 0.4771682322025299
                     },
                     {
-                        "token": "Paris",
-                        "score": 0.1131427139043808
+                        "rank": 2,
+                        "token": "市",
+                        "score": 0.10027528554201126
+                    },
+                    {
+                        "rank": 3,
+                        "token": "京",
+                        "score": 0.04381847754120827
+                    },
+                    {
+                        "rank": 4,
+                        "token": "-",
+                        "score": 0.04354635998606682
+                    },
+                    {
+                        "rank": 5,
+                        "token": "省",
+                        "score": 0.03496776521205902
                     }
                 ]
-            }
+            },
+            "user_input": "中国的首都是[MASK]。",
+            "input_type": "text"
+        },
+        {
+            "model": "XLM",
+            "success": true,
+            "is_placeholder": false,
+            "result": {
+                "model_used": "xlm-roberta-base",
+                "task": "Cross-lingual Text Similarity",
+                "text1": "The weather is nice",
+                "text2": "天气很好",
+                "similarity_score": 0.9984,
+                "note": "Similarity score ranges from -1 to 1 (1 = identical meaning)"
+            },
+            "user_input": "The weather is nice | 天气很好",
+            "input_type": "text"
         },
         {
             "model": "XLM-R",
             "success": true,
             "is_placeholder": false,
             "result": {
-                "input": "It is a very <mask> day.",
-                "output": [
+                "model_info": "XLM-RoBERTa (Facebook AI 2019)",
+                "architecture": "RoBERTa for 100+ languages",
+                "parameters": "270M",
+                "training_data": "2.5TB of filtered CommonCrawl data",
+                "task": "多语言掩码语言模型",
+                "input": "今天是一个很<mask>的日子。",
+                "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
+                "predictions": [
                     {
-                        "token": "nice",
-                        "score": 0.15444475412368774
+                        "rank": 1,
+                        "token": "triste",
+                        "score": 0.08652832359075546
                     },
                     {
-                        "token": "beautiful",
-                        "score": 0.12351326644420624
+                        "rank": 2,
+                        "token": "special",
+                        "score": 0.08353183418512344
+                    },
+                    {
+                        "rank": 3,
+                        "token": "खास",
+                        "score": 0.03324289619922638
+                    },
+                    {
+                        "rank": 4,
+                        "token": "interesting",
+                        "score": 0.030285095795989037
+                    },
+                    {
+                        "rank": 5,
+                        "token": "importante",
+                        "score": 0.02774243988096714
                     }
-                ]
-            }
-        },
-        {
-            "model": "XLM",
-            "success": true,
-            "is_placeholder": true,
-            "result": "XLM 引入了翻译语言模型 (TLM) 目标，在具有平行语料的跨语言理解上有重要地位。本地运行较重且已被 XLM-R 超越，故此处仅作说明性占位。"
+                ],
+                "note": "XLM-R 仅使用大规模单语预训练就达到了超越XLM（使用平行语料）的性能"
+            },
+            "user_input": "今天是一个很<mask>的日子。",
+            "input_type": "text"
         }
     ]
 }

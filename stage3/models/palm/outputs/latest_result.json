@@ -1,6 +1,8 @@
 {
     "model": "PaLM",
-    "success": true,
-    "is_placeholder": true,
-    "result": "Google 的庞大语言模型，证明了扩大参数规模能极大提升多语言推理能力。无开源权重，仅作说明。"
+    "success": false,
+    "is_placeholder": false,
+    "result": "❌ PaLM 模型不可用（无开源版本）\n\nGoogle 的 PaLM 是一个专有大规模语言模型，没有开源权重版本。\n\n使用方式:\n1. 通过 Google Vertex AI API 调用\n   - 需要 Google Cloud 账户和 API 密钥\n   - 参考: https://cloud.google.com/ai/generative-ai\n\n2. 使用开源替代模型:\n   - BLOOM (本项目有实现)\n   - LLaMA / Mistral\n   - Falcon\n   - Qwen\n\n如需启用实际 PaLM 调用，请:\n- 在 .env 中配置 GOOGLE_API_KEY\n- 修改此文件以使用 Google Generative AI SDK",
+    "user_input": "说明: PaLM 无开源版本",
+    "input_type": "text"
 }

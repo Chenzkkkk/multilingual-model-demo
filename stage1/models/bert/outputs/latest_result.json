@@ -1,6 +1,39 @@
 {
     "model": "BERT",
     "success": true,
-    "is_placeholder": true,
-    "result": "BERT 引入双向 Transformer，利用 MLM 提升了表示质量。作为纯英模型，促成了 mBERT 等多语言模型的诞生。本阶段侧重 mBERT，BERT 仅作占位。"
+    "is_placeholder": false,
+    "result": {
+        "task": "Masked Language Modeling",
+        "input": "The capital of France is [MASK].",
+        "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
+        "predictions": [
+            {
+                "rank": 1,
+                "token": "paris",
+                "score": 0.41678887605667114
+            },
+            {
+                "rank": 2,
+                "token": "lille",
+                "score": 0.07141672819852829
+            },
+            {
+                "rank": 3,
+                "token": "lyon",
+                "score": 0.06339263916015625
+            },
+            {
+                "rank": 4,
+                "token": "marseille",
+                "score": 0.044447556138038635
+            },
+            {
+                "rank": 5,
+                "token": "tours",
+                "score": 0.030297188088297844
+            }
+        ]
+    },
+    "user_input": "The capital of France is [MASK].",
+    "input_type": "text"
 }

@@ -1,36 +1,101 @@
-from gensim.models import Word2Vec
-from pathlib import Path
-import os
+"""
+Word2Vec - Static Word Embeddings
+词向量模型演示（静态词表示）
+"""
 import sys
+from pathlib import Path
 
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.append(str(project_root))
 
-from common.io_utils import save_json, load_json
+from common.io_utils import save_json
 from common.utils import build_model_result
 
-def run_word2vec():
+def run_word2vec(user_word: str = None, corpus_text: str = None):
+    """
+    Word2Vec 演示 - Skip-gram 模型
+    用户输入：要查询的词 + 训练语料
+    """
     output_dir = Path(__file__).parent / "outputs"
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    sentences = [
-        "你好 世界".split(),
-        "hello world".split(),
-        "hola mundo".split(),
-        "word embeddings are useful".split(),
-        "词向量 是 有用 的".split()
-    ]
-    
     try:
-        model = Word2Vec(sentences=sentences, vector_size=10, window=2, min_count=1, workers=1)
-        similars = model.wv.most_similar("你好", topn=3)
-        formatted_sims = [{"word": word, "score": float(score)} for word, score in similars]
+        from gensim.models import Word2Vec
         
-        result = build_model_result("word2vec", True, {"query": "你好", "similar_words": formatted_sims})
+        # 默认语料库
+        default_corpus = """
+        the cat sat on the mat
+        a dog played in the park
+        the dog chased the cat
+        birds fly in the sky
+        the bird sang a song
+        """
+        
+        corpus = corpus_text or default_corpus
+        
+        # 分词
+        sentences = [line.strip().split() for line in corpus.strip().split('\n') if line.strip()]
+        
+        # 如果句子太少，添加一些示例
+        if len(sentences) < 3:
+            default_sentences = [
+                ["the", "cat", "sat", "on", "the", "mat"],
+                ["a", "dog", "played", "in", "the", "park"],
+                ["the", "dog", "chased", "the", "cat"],
+                ["birds", "fly", "in", "the", "sky"],
+            ]
+            sentences = default_sentences
+        
+        # 训练Word2Vec模型
+        model = Word2Vec(sentences=sentences, vector_size=10, window=3, min_count=1, workers=1, sg=1)
+        
+        # 默认查询词
+        query_word = user_word or "cat"
+        
+        # 检查词是否在词汇表中
+        if query_word.lower() not in model.wv:
+            available_words = list(model.wv.index_to_key)[:10]
+            return build_model_result(
+                "Word2Vec",
+                False,
+                f"词 '{query_word}' 不在语料库中。可用的词包括：{available_words}",
+                user_input=f"query_word={user_word}, corpus_provided={corpus_text is not None}",
+                input_type="text"
+            )
+        
+        # 获取最相似的词
+        similar_words = model.wv.most_similar(query_word.lower(), topn=5)
+        
+        results = {
+            "query_word": query_word,
+            "embeddings": [
+                {
+                    "word": word,
+                    "similarity_score": float(score)
+                }
+                for word, score in similar_words
+            ],
+            "vocab_size": len(model.wv)
+        }
+        
+        result = build_model_result(
+            "Word2Vec",
+            True,
+            {
+                "model_info": "Word2Vec Skip-gram (Mikolov et al., 2013)",
+                "embedding_type": "Static Word Embeddings",
+                "user_input_word": query_word,
+                "results": results
+            },
+            user_input=user_word or "cat",
+            input_type="text"
+        )
+        
         save_json(result, output_dir / "latest_result.json")
         return result
+        
     except Exception as e:
-        result = build_model_result("word2vec", False, str(e))
+        result = build_model_result("Word2Vec", False, str(e), user_input=user_word or "cat")
         save_json(result, output_dir / "latest_result.json")
         return result
 

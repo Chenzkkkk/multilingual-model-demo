@@ -1,6 +1,14 @@
 {
     "model": "mBART",
     "success": true,
-    "is_placeholder": true,
-    "result": "多语言 BART 架构，适合机器翻译等任务，本地模型较重，仅作说明。"
+    "is_placeholder": false,
+    "result": {
+        "model": "facebook/mbart-large-cc25",
+        "task": "Sequence-to-Sequence Generation",
+        "input": "translate Chinese to English: 你好，世界",
+        "output": "trans trans trans Chinese to English: 你好世界",
+        "supported_languages": "25 languages"
+    },
+    "user_input": "translate Chinese to English: 你好，世界",
+    "input_type": "text"
 }

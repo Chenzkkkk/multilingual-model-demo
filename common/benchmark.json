@@ -1,19 +1,482 @@
 {
   "stage1_mask_filling": [
-    {"lang": "en", "text": "The capital of France is [MASK].", "expected": "paris"},
-    {"lang": "zh", "text": "中国的首都是[MASK]。", "expected": "北京"}
+    {"lang": "英文", "text": "The capital of France is [MASK].", "expected": "paris"},
+    {"lang": "中文", "text": "中国的首都是[MASK]。", "expected": "北京"}
   ],
   "stage1_word_sense": [
-    {"lang": "en", "word": "bank", "sentences": [
+    {"lang": "英文", "word": "bank", "sentences": [
       "I deposited money in the bank.",
       "We sat by the river bank."
     ]},
-    {"lang": "zh", "word": "打", "sentences": [
+    {"lang": "中文", "word": "打", "sentences": [
       "他打篮球很厉害。",
       "一打鸡蛋是十二个。"
     ]}
   ],
   "stage1_translation": [
     {"en": "Hello world", "zh": "你好，世界"}
+  ],
+  "xnli": [
+    {
+      "id": "xnli_001",
+      "type": "否定陷阱",
+      "examples": [
+        {
+          "lang": "中文",
+          "premise": "那个男孩正在公园里踢足球。",
+          "hypothesis": "那个男孩没有在踢足球。",
+          "label": "contradiction",
+          "label_text": "矛盾（男孩在踢球，不能同时没在踢球）"
+        },
+        {
+          "lang": "波斯语",
+          "premise": "پسر کوچک در پارک داشت فوتبال بازی می‌کرد.",
+          "hypothesis": "پسر کوچک فوتبال بازی نمی‌کرد.",
+          "label": "contradiction",
+          "label_text": "متناقض"
+        },
+        {
+          "lang": "阿拉伯语",
+          "premise": "يلعب الصبي كرة القدم في الحديقة.",
+          "hypothesis": "الصبي لا يلعب كرة القدم.",
+          "label": "contradiction",
+          "label_text": "تناقض"
+        },
+        {
+          "lang": "英文",
+          "premise": "The boy is playing soccer in the park.",
+          "hypothesis": "The boy is not playing soccer.",
+          "label": "contradiction",
+          "label_text": "contradiction"
+        }
+      ]
+    },
+    {
+      "id": "xnli_002",
+      "type": "数字陷阱",
+      "examples": [
+        {
+          "lang": "中文",
+          "premise": "会议9点开始，11点结束。",
+          "hypothesis": "会议持续了两个小时。",
+          "label": "entailment",
+          "label_text": "蕴含（11 - 9 = 2小时）"
+        },
+        {
+          "lang": "波斯语",
+          "premise": "جلسه ساعت 9 صبح شروع شد و ساعت 11 پایان یافت.",
+          "hypothesis": "جلسه دو ساعت طول کشید.",
+          "label": "entailment",
+          "label_text": "نتیجه"
+        },
+        {
+          "lang": "阿拉伯语",
+          "premise": "بدأت الاجتماعة الساعة 9 صباحاً وانتهت الساعة 11.",
+          "hypothesis": "استمرت الاجتماعة ساعتين.",
+          "label": "entailment",
+          "label_text": "دلالة"
+        },
+        {
+          "lang": "英文",
+          "premise": "The meeting started at 9 and ended at 11.",
+          "hypothesis": "The meeting lasted two hours.",
+          "label": "entailment",
+          "label_text": "entailment"
+        }
+      ]
+    },
+    {
+      "id": "xnli_003",
+      "type": "中性判断",
+      "examples": [
+        {
+          "lang": "中文",
+          "premise": "一位女士正在图书馆看书。",
+          "hypothesis": "这位女士正在准备考试。",
+          "label": "neutral",
+          "label_text": "中立（可能在准备考试，但也可能只是阅读）"
+        },
+        {
+          "lang": "波斯语",
+          "premise": "یک زن در کتابخانه در حال خواندن کتاب بود.",
+          "hypothesis": "این زن برای امتحان آماده می‌شد.",
+          "label": "neutral",
+          "label_text": "بی‌طرف"
+        },
+        {
+          "lang": "阿拉伯语",
+          "premise": "امرأة تقرأ كتاباً في المكتبة.",
+          "hypothesis": "المرأة تستعد للامتحان.",
+          "label": "neutral",
+          "label_text": "محايد"
+        },
+        {
+          "lang": "英文",
+          "premise": "A woman is reading a book in the library.",
+          "hypothesis": "The woman is preparing for an exam.",
+          "label": "neutral",
+          "label_text": "neutral"
+        }
+      ]
+    }
+  ],
+  "mgsm": [
+    {
+      "id": "mgsm_001",
+      "type": "简单加法",
+      "examples": [
+        {
+          "lang": "中文",
+          "problem": "小明有3个苹果，又买了2个苹果。现在他一共有多少个苹果？",
+          "answer": "5个苹果",
+          "reasoning": "3 + 2 = 5"
+        },
+        {
+          "lang": "波斯语",
+          "problem": "علی 3 سیب دارد و 2 سیب دیگر خریده است. او در کل چند سیب دارد؟",
+          "answer": "5 سیب",
+          "reasoning": "3 + 2 = 5"
+        },
+        {
+          "lang": "英文",
+          "problem": "Xiaoming has 3 apples. He bought 2 more apples. How many apples does he have now?",
+          "answer": "5 apples",
+          "reasoning": "3 + 2 = 5"
+        },
+        {
+          "lang": "阿拉伯语",
+          "problem": "علي لديه 3 تفاحات، واشتري تفاحتين إضافيتين. كم تفاحة لديه الآن؟",
+          "answer": "5 تفاحات",
+          "reasoning": "3 + 2 = 5"
+        }
+      ]
+    },
+    {
+      "id": "mgsm_002",
+      "type": "复杂减加",
+      "examples": [
+        {
+          "lang": "中文",
+          "problem": "一个盒子里有12支铅笔，小红送给小刚5支，然后又买了3支。她现在有多少支铅笔？",
+          "answer": "10支铅笔",
+          "reasoning": "12 - 5 + 3 = 10"
+        },
+        {
+          "lang": "波斯语",
+          "problem": "یک جعبه 12 مداد دارد. علی 5 مداد به احمد داد و سپس 3 مداد دیگر خرید. او اکنون چند مداد دارد؟",
+          "answer": "10 مداد",
+          "reasoning": "12 - 5 + 3 = 10"
+        },
+        {
+          "lang": "英文",
+          "problem": "A box has 12 pencils. Xiaohong gave 5 pencils to Xiaogeng and then bought 3 more. How many pencils does she have now?",
+          "answer": "10 pencils",
+          "reasoning": "12 - 5 + 3 = 10"
+        },
+        {
+          "lang": "阿拉伯语",
+          "problem": "صندوق فيه 12 قلم. أعطت شاويهونج 5 أقلام لشاوجينج ثم اشترت 3 قلم آخر. كم قلماً لديها الآن؟",
+          "answer": "10 أقلام",
+          "reasoning": "12 - 5 + 3 = 10"
+        }
+      ]
+    },
+    {
+      "id": "mgsm_003",
+      "type": "乘法应用",
+      "examples": [
+        {
+          "lang": "中文",
+          "problem": "一本笔记本4元，小李买了3本，一共要付多少钱？",
+          "answer": "12元",
+          "reasoning": "4 × 3 = 12"
+        },
+        {
+          "lang": "波斯语",
+          "problem": "یک دفتر 4 تومان قیمت دارد. علی 3 دفتر خریده است. او در کل چند تومان پرداخت کند؟",
+          "answer": "12 تومان",
+          "reasoning": "4 × 3 = 12"
+        },
+        {
+          "lang": "英文",
+          "problem": "A notebook costs 4 yuan. Xiaoli bought 3 notebooks. How much money does she need to pay in total?",
+          "answer": "12 yuan",
+          "reasoning": "4 × 3 = 12"
+        },
+        {
+          "lang": "अरबी",
+          "problem": "دفتر واحد بـ 4 ريال. اشترت شاوليي 3 دفاتر. كم ريال يجب أن تدفع في الإجمالي؟",
+          "answer": "12 ريال",
+          "reasoning": "4 × 3 = 12"
+        }
+      ]
+    },
+    {
+      "id": "mgsm_004",
+      "type": "时间计算",
+      "examples": [
+        {
+          "lang": "中文",
+          "problem": "火车8:00出发，10:30到达，旅程一共多长时间？",
+          "answer": "2小时30分钟",
+          "reasoning": "10:30 - 8:00 = 2小时30分钟"
+        },
+        {
+          "lang": "波斯语",
+          "problem": "قطار ساعت 8 صبح حرکت کرد و ساعت 10:30 رسید. سفر در کل چند ساعت طول کشید؟",
+          "answer": "2 ساعت و 30 دقیقه",
+          "reasoning": "10:30 - 8:00 = 2 ساعت و 30 دقیقه"
+        },
+        {
+          "lang": "英文",
+          "problem": "The train departs at 8:00 and arrives at 10:30. How long is the journey in total?",
+          "answer": "2 hours 30 minutes",
+          "reasoning": "10:30 - 8:00 = 2 hours 30 minutes"
+        },
+        {
+          "lang": "أرديو",
+          "problem": "ٹرین 8:00 پر روانہ ہوتی ہے اور 10:30 پر پہنچتی ہے۔ کل سفر کتنا وقت ہے؟",
+          "answer": "2 گھنٹے 30 منٹ",
+          "reasoning": "10:30 - 8:00 = 2 گھنٹے 30 منٹ"
+        }
+      ]
+    }
+  ],
+  "flores_200": [
+    {
+      "id": "flores_001",
+      "type": "专名翻译",
+      "examples": [
+        {
+          "lang": "中文",
+          "source": "巴拉克·奥巴马于七月访问了巴黎。",
+          "target_lang": "英文",
+          "target": "Barack Obama visited Paris in July."
+        },
+        {
+          "lang": "中文",
+          "source": "巴拉克·奥巴马于七月访问了巴黎。",
+          "target_lang": "波斯语",
+          "target": "باراک اوباما در ماه جولای از پاریس دیدار کرد."
+        },
+        {
+          "lang": "中文",
+          "source": "巴拉克·奥巴马于七月访问了巴黎。",
+          "target_lang": "阿拉伯语",
+          "target": "زار باراك أوباما باريس في شهر يوليو."
+        }
+      ]
+    },
+    {
+      "id": "flores_002",
+      "type": "数字与度量",
+      "examples": [
+        {
+          "lang": "中文",
+          "source": "这家公司在2024年售出了12540件产品。",
+          "target_lang": "英文",
+          "target": "The company sold 12,540 products in 2024."
+        },
+        {
+          "lang": "中文",
+          "source": "这家公司在2024年售出了12540件产品。",
+          "target_lang": "波斯语",
+          "target": "این شرکت در سال 2024 میلادی 12540 محصول فروخت."
+        },
+        {
+          "lang": "中文",
+          "source": "这家公司在2024年售出了12540件产品。",
+          "target_lang": "德文",
+          "target": "Das Unternehmen verkaufte 2024 12.540 Produkte."
+        }
+      ]
+    },
+    {
+      "id": "flores_003",
+      "type": "否定表达",
+      "examples": [
+        {
+          "lang": "中文",
+          "source": "病人在晚饭前没有吃药。",
+          "target_lang": "英文",
+          "target": "The patient did not take medicine before dinner."
+        },
+        {
+          "lang": "中文",
+          "source": "病人在晚饭前没有吃药。",
+          "target_lang": "波斯语",
+          "target": "بیمار قبل از شام دارو نخوردیم."
+        },
+        {
+          "lang": "中文",
+          "source": "病人在晚饭前没有吃药。",
+          "target_lang": "西班牙语",
+          "target": "El paciente no tomó medicina antes de la cena."
+        }
+      ]
+    },
+    {
+      "id": "flores_004",
+      "type": "复杂句式",
+      "examples": [
+        {
+          "lang": "中文",
+          "source": "去年获奖的那位科学家回到了她曾经就读的那所大学。",
+          "target_lang": "英文",
+          "target": "The scientist who won the award last year returned to the university where she once studied."
+        },
+        {
+          "lang": "中文",
+          "source": "去年获奖的那位科学家回到了她曾经就读的那所大学。",
+          "target_lang": "波斯语",
+          "target": "دانشمندی که سال گذشته جایزه برنده شد به دانشگاهی که قبلاً در آن تحصیل کرده بود بازگشت."
+        },
+        {
+          "lang": "中文",
+          "source": "去年获奖的那位科学家回到了她曾经就读的那所大学。",
+          "target_lang": "فرانسوی",
+          "target": "La scientifique qui a remporté le prix l'année dernière est retournée à l'université où elle avait autrefois étudié."
+        }
+      ]
+    }
+  ],
+  "xquad": [
+    {
+      "id": "xquad_001",
+      "type": "时间抽取",
+      "examples": [
+        {
+          "lang": "中文",
+          "context": "国际空间站于1998年首次发射升空，至今已在太空运行超过20年。",
+          "question": "国际空间站是什么时候发射升空的？",
+          "answers": ["1998年"],
+          "expected_extraction": "时间"
+        },
+        {
+          "lang": "波斯语",
+          "context": "ISS در سال 1998 به فضا پرتاب شد و بیش از 20 سال است که در مدار زمین قرار دارد.",
+          "question": "ISS در چه سالی به فضا پرتاب شد؟",
+          "answers": ["1998"],
+          "expected_extraction": "سال"
+        },
+        {
+          "lang": "英文",
+          "context": "The International Space Station was first launched into space in 1998 and has been orbiting Earth for over 20 years.",
+          "question": "When was the International Space Station launched into space?",
+          "answers": ["1998"],
+          "expected_extraction": "year"
+        }
+      ]
+    },
+    {
+      "id": "xquad_002",
+      "type": "地点抽取",
+      "examples": [
+        {
+          "lang": "中文",
+          "context": "歌德于1749年8月28日出生在法兰克福的一个商人家庭。",
+          "question": "歌德出生在哪里？",
+          "answers": ["法兰克福"],
+          "expected_extraction": "地点"
+        },
+        {
+          "lang": "波斯語",
+          "context": "رئیس جمهور لینکلن در 1865 در تئاتر فورد در واشنگتن دی سی ترور شد.",
+          "question": "لینکلن کجا ترور شد؟",
+          "answers": ["تئاتر فورد"],
+          "expected_extraction": "مکان"
+        },
+        {
+          "lang": "英文",
+          "context": "Goethe was born on August 28, 1749, in Frankfurt to a merchant family.",
+          "question": "Where was Goethe born?",
+          "answers": ["Frankfurt"],
+          "expected_extraction": "location"
+        }
+      ]
+    },
+    {
+      "id": "xquad_003",
+      "type": "人物识别",
+      "examples": [
+        {
+          "lang": "中文",
+          "context": "《相对论》是阿尔伯特·爱因斯坦最重要的理论贡献。",
+          "question": "《相对论》是谁提出的？",
+          "answers": ["阿尔伯特·爱因斯坦"],
+          "expected_extraction": "人物"
+        },
+        {
+          "lang": "波سی",
+          "context": "نظریه نسبیت توسط آلبرت انیشتین ارائه شد.",
+          "question": "نظریه نسبیت توسط چه کسی ارائه شد؟",
+          "answers": ["آلبرت انیشتین"],
+          "expected_extraction": "شخص"
+        },
+        {
+          "lang": "英文",
+          "context": "The Theory of Relativity is Albert Einstein's most important theoretical contribution.",
+          "question": "Who proposed the Theory of Relativity?",
+          "answers": ["Albert Einstein"],
+          "expected_extraction": "person"
+        }
+      ]
+    }
+  ],
+  "belebele": [
+    {
+      "id": "belebele_001",
+      "type": "简单理解",
+      "examples": [
+        {
+          "lang": "中文",
+          "passage": "小鸟在树上唱歌。",
+          "question": "小鸟在哪里？",
+          "options": ["在地上", "在树上", "在水里", "在房子里"],
+          "answer": "在树上"
+        },
+        {
+          "lang": "波斯语",
+          "passage": "پرنده روی درخت آواز می‌خواند.",
+          "question": "پرنده کجا است؟",
+          "options": ["روی زمین", "روی درخت", "در آب", "در خانه"],
+          "answer": "روی درخت"
+        },
+        {
+          "lang": "英文",
+          "passage": "The bird sings on the tree.",
+          "question": "Where is the bird?",
+          "options": ["on the ground", "on the tree", "in the water", "in the house"],
+          "answer": "on the tree"
+        }
+      ]
+    },
+    {
+      "id": "belebele_002",
+      "type": "推理理解",
+      "examples": [
+        {
+          "lang": "中文",
+          "passage": "今天下雨，所有的孩子都穿上了雨衣。小明是一个孩子。",
+          "question": "小明穿上雨衣了吗？",
+          "options": ["是", "否", "不确定"],
+          "answer": "是"
+        },
+        {
+          "lang": "波سی",
+          "passage": "امروز باران می‌بارد. تمام کودکان کت باران پوشیدند. علی یک کودک است.",
+          "question": "آیا علی کت باران پوشید؟",
+          "options": ["بله", "خیر", "مطمئن نیست"],
+          "answer": "بله"
+        },
+        {
+          "lang": "英文",
+          "passage": "It is raining today. All children wore raincoats. Xiaoming is a child.",
+          "question": "Did Xiaoming wear a raincoat?",
+          "options": ["Yes", "No", "Uncertain"],
+          "answer": "Yes"
+        }
+      ]
+    }
   ]
 }

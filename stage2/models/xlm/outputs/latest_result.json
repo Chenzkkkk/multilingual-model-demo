@@ -1,6 +1,15 @@
 {
     "model": "XLM",
     "success": true,
-    "is_placeholder": true,
-    "result": "XLM 引入了翻译语言模型 (TLM) 目标，在具有平行语料的跨语言理解上有重要地位。本地运行较重且已被 XLM-R 超越，故此处仅作说明性占位。"
+    "is_placeholder": false,
+    "result": {
+        "model_used": "xlm-roberta-base",
+        "task": "Cross-lingual Text Similarity",
+        "text1": "The weather is nice",
+        "text2": "天气很好",
+        "similarity_score": 0.9984,
+        "note": "Similarity score ranges from -1 to 1 (1 = identical meaning)"
+    },
+    "user_input": "The weather is nice | 天气很好",
+    "input_type": "text"
 }

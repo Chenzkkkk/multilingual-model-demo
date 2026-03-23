@@ -1,6 +1,11 @@
 {
     "model": "BLOOM",
-    "success": false,
+    "success": true,
     "is_placeholder": false,
-    "result": "Cannot send a request, as the client has been closed."
+    "result": {
+        "input": "今天天气很好，我想",
+        "output": "今天天气很好，我想去游泳，刚到家，就听到一个大姐姐喊我。我"
+    },
+    "user_input": "今天天气很好，我想",
+    "input_type": "text"
 }

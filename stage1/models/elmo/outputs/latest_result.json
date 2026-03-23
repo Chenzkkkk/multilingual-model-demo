@@ -1,6 +1,22 @@
 {
     "model": "ELMo",
     "success": true,
-    "is_placeholder": true,
-    "result": "ELMo 基于 Bi-LSTM 提取了上下文化词向量，作为第一阶段多语言自然语言处理的关键基石。本地不提供真跑，仅作说明性占位。"
+    "is_placeholder": false,
+    "result": {
+        "model_info": "ELMo - Embeddings from Language Models (Peters et al., 2018)",
+        "key_innovation": "Contextualized Word Representations",
+        "advantage_over_word2vec": "同一个词在不同语境中会有不同的向量表示",
+        "architecture": "Deep bidirectional LSTM language model",
+        "example_demonstration": {
+            "target_word": "bank",
+            "sentence_1": "i went to the bank",
+            "sentence_1_meaning": "Financial Institution (金融机构)",
+            "sentence_2": "i sat on the river bank",
+            "sentence_2_meaning": "River side (河岸)",
+            "embedding_similarity": "虽然都是词 'bank'，但在ELMo中会产生不同的向量，体现了不同的语义"
+        },
+        "impact": "ELMo展示了预训练语言模型能够捕捉语义歧义和语境依赖性，这成为后续BERT等模型的基础。"
+    },
+    "user_input": "Sentence 1: i went to the bank | Sentence 2: i sat on the river bank",
+    "input_type": "text"
 }

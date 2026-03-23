@@ -1,6 +1,14 @@
 {
     "model": "XGLM",
     "success": true,
-    "is_placeholder": true,
-    "result": "Facebook 提出的基于 Decoder 的多语言模型，本地运行较重，仅作说明。"
+    "is_placeholder": false,
+    "result": {
+        "model": "facebook/xglm-564M",
+        "task": "Cross-lingual Text Generation",
+        "input": "今天天气很好，我想",
+        "output": "今天天气很好,我想 天气很好,我想出去玩,我想出去玩,我想出去",
+        "languages_supported": "100+ languages"
+    },
+    "user_input": "今天天气很好，我想",
+    "input_type": "text"
 }

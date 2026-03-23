@@ -1,6 +1,12 @@
 {
     "model": "mT5",
-    "success": false,
+    "success": true,
     "is_placeholder": false,
-    "result": "Cannot send a request, as the client has been closed."
+    "result": {
+        "input": "translate English to Chinese: Hello world",
+        "output": "<extra_id_0>",
+        "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models"
+    },
+    "user_input": "translate English to Chinese: Hello world",
+    "input_type": "text"
 }

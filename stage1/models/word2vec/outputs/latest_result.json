@@ -1,22 +1,38 @@
 {
-    "model": "word2vec",
+    "model": "Word2Vec",
     "success": true,
     "is_placeholder": false,
     "result": {
-        "query": "你好",
-        "similar_words": [
-            {
-                "word": "世界",
-                "score": 0.43408331274986267
-            },
-            {
-                "word": "embeddings",
-                "score": 0.22019535303115845
-            },
-            {
-                "word": "hello",
-                "score": 0.20956431329250336
-            }
-        ]
-    }
+        "model_info": "Word2Vec Skip-gram (Mikolov et al., 2013)",
+        "embedding_type": "Static Word Embeddings",
+        "user_input_word": "cat",
+        "results": {
+            "query_word": "cat",
+            "embeddings": [
+                {
+                    "word": "sang",
+                    "similarity_score": 0.614375650882721
+                },
+                {
+                    "word": "sat",
+                    "similarity_score": 0.3423961102962494
+                },
+                {
+                    "word": "song",
+                    "similarity_score": 0.24954791367053986
+                },
+                {
+                    "word": "park",
+                    "similarity_score": 0.14175066351890564
+                },
+                {
+                    "word": "played",
+                    "similarity_score": 0.11167987436056137
+                }
+            ],
+            "vocab_size": 17
+        }
+    },
+    "user_input": "cat",
+    "input_type": "text"
 }

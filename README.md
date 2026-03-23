@@ -5,8 +5,8 @@
 ## 项目结构
 - `common/`: 基础公共代码
 - `frontend/`: 基于 Streamlit 的客户端页面
-- `stage1/`: 从 word2vec 到 BERT——预训练范式的奠基
-- `stage2/`: mBERT / XLM / XLM-R——多语言 Encoder 预训练时代
+- `stage1/`: 从 word2vec 到 BERT 与 mBERT——预训练范式的奠基
+- `stage2/`: XLM / XLM-R——多语言 Encoder 预训练时代
 - `stage3/`: 从 mT5 到 BLOOM——多语言生成的双路线过渡期
 - `stage4/`: GPT-4 之后——多语言 LLM 的对齐、涌现与前沿
 
@@ -30,3 +30,10 @@ cp .env.example .env
 ```bash
 streamlit run frontend/app.py
 ```
+
+## 前端页面说明
+- 首页提供四个阶段的统一入口。
+- 每个阶段拆分为两个独立页面：
+	- 讲解页面：用于课程说明、模型背景和任务边界。
+	- 测试页面：用于模型输入和运行结果查看。
+- 测试结果使用结构化前端卡片展示，不直接展示原始 JSON 响应。

@@ -4,17 +4,23 @@ project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
 from common.io_utils import save_json
+from stage3.models.mbart.run import run_mbart
 from stage3.models.mt5.run import run_mt5
 from stage3.models.bloom.run import run_bloom
-from stage3.models.mbart.run import run_mbart
 from stage3.models.xglm.run import run_xglm
-from stage3.models.gpt3.run import run_gpt3
-from stage3.models.palm.run import run_palm
 
-def run_demo():
+def run_demo(user_inputs: dict = None):
     output_dir = Path(__file__).parent / "outputs"
     output_dir.mkdir(parents=True, exist_ok=True)
-    results = [run_mt5(), run_bloom(), run_mbart(), run_xglm(), run_gpt3(), run_palm()]
+    
+    user_inputs = user_inputs or {}
+    
+    results = [
+        run_mbart(user_input=user_inputs.get("mbart_input")),
+        run_mt5(user_input=user_inputs.get("mt5_input")),
+        run_bloom(user_input=user_inputs.get("bloom_input")),
+        run_xglm(user_input=user_inputs.get("xglm_input")),
+    ]
     save_json({"stage": 3, "results": results}, output_dir / "latest_result.json")
     return results
 

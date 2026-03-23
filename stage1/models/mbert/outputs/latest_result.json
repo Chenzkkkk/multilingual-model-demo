@@ -1,37 +1,40 @@
 {
-    "model": "mbert",
+    "model": "mBERT",
     "success": true,
     "is_placeholder": false,
     "result": {
-        "我们 去 [MASK] 玩。": [
+        "model_info": "Multilingual BERT (Devlin et al., 2018)",
+        "languages_supported": "100+ languages",
+        "task": "Masked Language Modeling (MLM) - Multilingual",
+        "input": "我们 去 [MASK] 玩。",
+        "predictions": [
             {
-                "token_str": "玩",
-                "score": 0.4284
+                "rank": 1,
+                "token": "玩",
+                "score": 0.4283745288848877
             },
             {
-                "token_str": "去",
-                "score": 0.0751
-            }
-        ],
-        "We are going to [MASK].": [
-            {
-                "token_str": "go",
-                "score": 0.2081
+                "rank": 2,
+                "token": "去",
+                "score": 0.07511531561613083
             },
             {
-                "token_str": "do",
-                "score": 0.1011
-            }
-        ],
-        "Vamos a [MASK].": [
-            {
-                "token_str": "cargo",
-                "score": 0.0146
+                "rank": 3,
+                "token": "了",
+                "score": 0.032305922359228134
             },
             {
-                "token_str": "R",
-                "score": 0.0136
+                "rank": 4,
+                "token": "来",
+                "score": 0.029802139848470688
+            },
+            {
+                "rank": 5,
+                "token": "游",
+                "score": 0.022642992436885834
             }
         ]
-    }
+    },
+    "user_input": "我们 去 [MASK] 玩。",
+    "input_type": "text"
 }
