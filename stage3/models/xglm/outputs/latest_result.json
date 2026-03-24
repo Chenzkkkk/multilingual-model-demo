@@ -5,10 +5,10 @@
     "result": {
         "model": "facebook/xglm-564M",
         "task": "Cross-lingual Text Generation",
-        "input": "今天天气很好，我想",
-        "output": "今天天气很好,我想 天气很好,我想出去玩,我想出去玩,我想出去",
+        "input": "Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multilingual models.",
+        "output": "Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multilingual models. Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multi",
         "languages_supported": "100+ languages"
     },
-    "user_input": "今天天气很好，我想",
+    "user_input": "Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multilingual models.",
     "input_type": "text"
 }

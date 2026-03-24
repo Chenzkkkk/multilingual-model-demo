@@ -6,35 +6,35 @@
         "model_info": "Multilingual BERT (Devlin et al., 2018)",
         "languages_supported": "100+ languages",
         "task": "Masked Language Modeling (MLM) - Multilingual",
-        "input": "我们 去 [MASK] 玩。",
+        "input": "这个计划虽然很[MASK]，但只要协作得当，仍有机会完成。",
         "predictions": [
             {
                 "rank": 1,
-                "token": "玩",
-                "score": 0.4283745288848877
+                "token": "好",
+                "score": 0.1956799328327179
             },
             {
                 "rank": 2,
-                "token": "去",
-                "score": 0.07511531561613083
+                "token": "快",
+                "score": 0.11050234735012054
             },
             {
                 "rank": 3,
-                "token": "了",
-                "score": 0.032305922359228134
+                "token": "大",
+                "score": 0.10064289718866348
             },
             {
                 "rank": 4,
-                "token": "来",
-                "score": 0.029802139848470688
+                "token": "小",
+                "score": 0.06342367082834244
             },
             {
                 "rank": 5,
-                "token": "游",
-                "score": 0.022642992436885834
+                "token": "少",
+                "score": 0.06188236176967621
             }
         ]
     },
-    "user_input": "我们 去 [MASK] 玩。",
+    "user_input": "这个计划虽然很[MASK]，但只要协作得当，仍有机会完成。",
     "input_type": "text"
 }

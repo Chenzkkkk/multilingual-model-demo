@@ -8,11 +8,11 @@
             "result": {
                 "model": "facebook/mbart-large-cc25",
                 "task": "Sequence-to-Sequence Generation",
-                "input": "translate Chinese to English: 你好，世界",
-                "output": "trans trans trans Chinese to English: 你好世界",
+                "input": "translate Chinese to English: 去年获奖的那位科学家回到了她曾经就读的那所大学，并宣布设立青年研究基金。",
+                "output": "theorising大学大学并宣布设立青年研究设立青年研究基金。",
                 "supported_languages": "25 languages"
             },
-            "user_input": "translate Chinese to English: 你好，世界",
+            "user_input": "translate Chinese to English: 去年获奖的那位科学家回到了她曾经就读的那所大学，并宣布设立青年研究基金。",
             "input_type": "text"
         },
         {
@@ -20,11 +20,11 @@
             "success": true,
             "is_placeholder": false,
             "result": {
-                "input": "translate English to Chinese: Hello world",
-                "output": "<extra_id_0>",
+                "input": "translate Chinese to Persian: 这家公司在2024年售出了12540件产品，其中40%来自海外市场。",
+                "output": "<extra_id_0>。",
                 "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models"
             },
-            "user_input": "translate English to Chinese: Hello world",
+            "user_input": "translate Chinese to Persian: 这家公司在2024年售出了12540件产品，其中40%来自海外市场。",
             "input_type": "text"
         },
         {
@@ -32,10 +32,10 @@
             "success": true,
             "is_placeholder": false,
             "result": {
-                "input": "今天天气很好，我想",
-                "output": "今天天气很好，我想去游泳，刚到家，就听到一个大姐姐喊我。我"
+                "input": "请以记者口吻写一段100字新闻快讯，主题是“多语言模型在医疗问答中的应用边界”。",
+                "output": "请以记者口吻写一段100字新闻快讯，主题是“多语言模型在医疗问答中的应用边界”。《医学问答》作者介绍 作者：(美国)巴里·麦肯"
             },
-            "user_input": "今天天气很好，我想",
+            "user_input": "请以记者口吻写一段100字新闻快讯，主题是“多语言模型在医疗问答中的应用边界”。",
             "input_type": "text"
         },
         {
@@ -45,27 +45,11 @@
             "result": {
                 "model": "facebook/xglm-564M",
                 "task": "Cross-lingual Text Generation",
-                "input": "今天天气很好，我想",
-                "output": "今天天气很好,我想 天气很好,我想出去玩,我想出去玩,我想出去",
+                "input": "Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multilingual models.",
+                "output": "Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multilingual models. Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multi",
                 "languages_supported": "100+ languages"
             },
-            "user_input": "今天天气很好，我想",
-            "input_type": "text"
-        },
-        {
-            "model": "GPT-3",
-            "success": false,
-            "is_placeholder": false,
-            "result": "❌ GPT-3 模型不可用（需要 OpenAI API）\n\nGPT-3 是 OpenAI 的专有大规模语言模型。\n\n启用步骤:\n1. 获取 OpenAI API 密钥\n   - 访问 https://platform.openai.com/api-keys\n   - 创建新的 API 密钥\n\n2. 配置环境变量\n   - 在 .env 文件中设置: OPENAI_API_KEY=sk-...\n\n3. 费用提示\n   - OpenAI API 按 token 计费\n   - 查看定价: https://openai.com/pricing\n\n开源替代方案（本项目已包含）:\n- BLOOM (facebook 开源大模型)\n- XGLM (多语言生成模型)\n- LLaMA / Mistral\n- Qwen (阿里巴巴)\n",
-            "user_input": "中国的首都是哪里？",
-            "input_type": "text"
-        },
-        {
-            "model": "PaLM",
-            "success": false,
-            "is_placeholder": false,
-            "result": "❌ PaLM 模型不可用（无开源版本）\n\nGoogle 的 PaLM 是一个专有大规模语言模型，没有开源权重版本。\n\n使用方式:\n1. 通过 Google Vertex AI API 调用\n   - 需要 Google Cloud 账户和 API 密钥\n   - 参考: https://cloud.google.com/ai/generative-ai\n\n2. 使用开源替代模型:\n   - BLOOM (本项目有实现)\n   - LLaMA / Mistral\n   - Falcon\n   - Qwen\n\n如需启用实际 PaLM 调用，请:\n- 在 .env 中配置 GOOGLE_API_KEY\n- 修改此文件以使用 Google Generative AI SDK",
-            "user_input": "说明: PaLM 无开源版本",
+            "user_input": "Write a short bilingual paragraph (Chinese + English) comparing translation quality and reasoning quality in multilingual models.",
             "input_type": "text"
         }
     ]

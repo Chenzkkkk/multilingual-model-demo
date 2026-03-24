@@ -118,6 +118,40 @@
           "label_text": "neutral"
         }
       ]
+    },
+    {
+      "id": "xnli_004",
+      "type": "双重否定与范围量词",
+      "examples": [
+        {
+          "lang": "中文",
+          "premise": "并非所有学生都没有通过考试。",
+          "hypothesis": "至少有一名学生通过了考试。",
+          "label": "entailment",
+          "label_text": "蕴含（不是‘所有人都没过’意味着至少有人通过）"
+        },
+        {
+          "lang": "波斯语",
+          "premise": "درست نیست که همه دانش‌آموزان مردود شده‌اند.",
+          "hypothesis": "حداقل یک دانش‌آموز قبول شده است.",
+          "label": "entailment",
+          "label_text": "نتیجه"
+        },
+        {
+          "lang": "阿拉伯语",
+          "premise": "ليس صحيحًا أن جميع الطلاب قد رسبوا.",
+          "hypothesis": "هناك طالب واحد على الأقل نجح في الامتحان.",
+          "label": "entailment",
+          "label_text": "دلالة"
+        },
+        {
+          "lang": "英文",
+          "premise": "It is not true that all students failed the exam.",
+          "hypothesis": "At least one student passed the exam.",
+          "label": "entailment",
+          "label_text": "entailment"
+        }
+      ]
     }
   ],
   "mgsm": [
@@ -240,6 +274,36 @@
           "reasoning": "10:30 - 8:00 = 2 گھنٹے 30 منٹ"
         }
       ]
+    },
+    {
+      "id": "mgsm_005",
+      "type": "折扣与退款混合",
+      "examples": [
+        {
+          "lang": "中文",
+          "problem": "小周买了3本书，每本28元。结账时使用了15元优惠券，回家后退掉1本并拿回28元。她最终实际花了多少钱？",
+          "answer": "41元",
+          "reasoning": "3×28-15-28=41"
+        },
+        {
+          "lang": "波斯语",
+          "problem": "ژو 3 کتاب خرید که هر کدام 28 یوان بود. هنگام پرداخت 15 یوان تخفیف گرفت و بعداً یک کتاب را پس داد و 28 یوان پس گرفت. او در نهایت چقدر پرداخت کرد؟",
+          "answer": "41 یوان",
+          "reasoning": "3×28-15-28=41"
+        },
+        {
+          "lang": "英文",
+          "problem": "Xiaozhou bought 3 books at 28 yuan each. She used a 15-yuan coupon at checkout, then returned 1 book and got 28 yuan back. How much did she finally pay?",
+          "answer": "41 yuan",
+          "reasoning": "3×28-15-28=41"
+        },
+        {
+          "lang": "阿拉伯语",
+          "problem": "اشترت شياو تشو 3 كتب بسعر 28 يوانًا للكتاب. استخدمت قسيمة خصم 15 يوانًا، ثم أعادت كتابًا واحدًا واسترجعت 28 يوانًا. كم دفعت في النهاية؟",
+          "answer": "41 يوان",
+          "reasoning": "3×28-15-28=41"
+        }
+      ]
     }
   ],
   "flores_200": [
@@ -338,6 +402,30 @@
           "target": "La scientifique qui a remporté le prix l'année dernière est retournée à l'université où elle avait autrefois étudié."
         }
       ]
+    },
+    {
+      "id": "flores_005",
+      "type": "习语与引号",
+      "examples": [
+        {
+          "lang": "中文",
+          "source": "经理说“先别急着下结论”，但团队已经像热锅上的蚂蚁一样忙成一团。",
+          "target_lang": "英文",
+          "target": "The manager said, \"Don't rush to conclusions yet,\" but the team was already scrambling like ants on a hot pan."
+        },
+        {
+          "lang": "中文",
+          "source": "经理说“先别急着下结论”，但团队已经像热锅上的蚂蚁一样忙成一团。",
+          "target_lang": "波斯语",
+          "target": "مدیر گفت: «هنوز برای نتیجه‌گیری عجله نکنید»، اما تیم از قبل مثل مورچه روی دیگ داغ سراسیمه شده بود."
+        },
+        {
+          "lang": "中文",
+          "source": "经理说“先别急着下结论”，但团队已经像热锅上的蚂蚁一样忙成一团。",
+          "target_lang": "阿拉伯语",
+          "target": "قال المدير: «لا تتعجلوا الاستنتاج بعد»، لكن الفريق كان بالفعل مرتبكًا ويتحرك بسرعة كالنمل على صفيح ساخن."
+        }
+      ]
     }
   ],
   "xquad": [
@@ -421,6 +509,33 @@
           "expected_extraction": "person"
         }
       ]
+    },
+    {
+      "id": "xquad_004",
+      "type": "多时间点干扰",
+      "examples": [
+        {
+          "lang": "中文",
+          "context": "这座博物馆于1999年完成主体建筑，2001年对公众开放，2010年进行扩建并新增了海洋展厅。",
+          "question": "这座博物馆是在什么时候对公众开放的？",
+          "answers": ["2001年"],
+          "expected_extraction": "时间"
+        },
+        {
+          "lang": "波斯语",
+          "context": "این موزه در سال 1999 ساختار اصلی خود را تکمیل کرد، در سال 2001 برای عموم افتتاح شد و در سال 2010 گسترش یافت.",
+          "question": "این موزه چه سالی برای عموم افتتاح شد؟",
+          "answers": ["2001"],
+          "expected_extraction": "سال"
+        },
+        {
+          "lang": "英文",
+          "context": "The museum completed its main building in 1999, opened to the public in 2001, and was expanded in 2010.",
+          "question": "In which year did the museum open to the public?",
+          "answers": ["2001"],
+          "expected_extraction": "year"
+        }
+      ]
     }
   ],
   "belebele": [
@@ -475,6 +590,33 @@
           "question": "Did Xiaoming wear a raincoat?",
           "options": ["Yes", "No", "Uncertain"],
           "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "id": "belebele_003",
+      "type": "反事实理解",
+      "examples": [
+        {
+          "lang": "中文",
+          "passage": "如果昨晚没有下雨，操场今天就会开放。但昨晚确实下雨了，所以操场今天关闭。",
+          "question": "根据这段话，操场今天的状态是？",
+          "options": ["开放", "关闭", "无法判断"],
+          "answer": "关闭"
+        },
+        {
+          "lang": "波斯语",
+          "passage": "اگر دیشب باران نمی‌بارید، زمین ورزش امروز باز می‌بود. اما دیشب واقعاً باران بارید، پس زمین امروز بسته است.",
+          "question": "طبق متن، وضعیت زمین ورزش امروز چیست؟",
+          "options": ["باز", "بسته", "نامشخص"],
+          "answer": "بسته"
+        },
+        {
+          "lang": "英文",
+          "passage": "If it had not rained last night, the playground would be open today. But it did rain last night, so the playground is closed today.",
+          "question": "According to the passage, what is the playground status today?",
+          "options": ["Open", "Closed", "Cannot be determined"],
+          "answer": "Closed"
         }
       ]
     }

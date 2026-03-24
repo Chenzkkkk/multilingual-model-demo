@@ -5,10 +5,10 @@
     "result": {
         "model": "facebook/mbart-large-cc25",
         "task": "Sequence-to-Sequence Generation",
-        "input": "translate Chinese to English: 你好，世界",
-        "output": "trans trans trans Chinese to English: 你好世界",
+        "input": "translate Chinese to English: 去年获奖的那位科学家回到了她曾经就读的那所大学，并宣布设立青年研究基金。",
+        "output": "theorising大学大学并宣布设立青年研究设立青年研究基金。",
         "supported_languages": "25 languages"
     },
-    "user_input": "translate Chinese to English: 你好，世界",
+    "user_input": "translate Chinese to English: 去年获奖的那位科学家回到了她曾经就读的那所大学，并宣布设立青年研究基金。",
     "input_type": "text"
 }

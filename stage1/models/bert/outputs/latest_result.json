@@ -4,36 +4,36 @@
     "is_placeholder": false,
     "result": {
         "task": "Masked Language Modeling",
-        "input": "The capital of France is [MASK].",
+        "input": "After years of drought, the reservoir is finally [MASK] again.",
         "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
         "predictions": [
             {
                 "rank": 1,
-                "token": "paris",
-                "score": 0.41678887605667114
+                "token": "full",
+                "score": 0.4416130781173706
             },
             {
                 "rank": 2,
-                "token": "lille",
-                "score": 0.07141672819852829
+                "token": "filled",
+                "score": 0.29452553391456604
             },
             {
                 "rank": 3,
-                "token": "lyon",
-                "score": 0.06339263916015625
+                "token": "filling",
+                "score": 0.016728054732084274
             },
             {
                 "rank": 4,
-                "token": "marseille",
-                "score": 0.044447556138038635
+                "token": "drained",
+                "score": 0.016118910163640976
             },
             {
                 "rank": 5,
-                "token": "tours",
-                "score": 0.030297188088297844
+                "token": "empty",
+                "score": 0.013903136365115643
             }
         ]
     },
-    "user_input": "The capital of France is [MASK].",
+    "user_input": "After years of drought, the reservoir is finally [MASK] again.",
     "input_type": "text"
 }

@@ -29,6 +29,11 @@ def run_word2vec(user_word: str = None, corpus_text: str = None):
         the dog chased the cat
         birds fly in the sky
         the bird sang a song
+        i deposited money in the bank yesterday
+        we had a picnic on the river bank after rain
+        the startup team discussed innovation strategy at night
+        financial risk can spread quickly across the market
+        medical researchers published a multilingual benchmark report
         """
         
         corpus = corpus_text or default_corpus
@@ -53,18 +58,26 @@ def run_word2vec(user_word: str = None, corpus_text: str = None):
         query_word = user_word or "cat"
         
         # 检查词是否在词汇表中
-        if query_word.lower() not in model.wv:
+        query_word_lc = query_word.lower()
+        if query_word_lc not in model.wv:
             available_words = list(model.wv.index_to_key)[:10]
+            try:
+                from difflib import get_close_matches
+
+                suggestions = get_close_matches(query_word_lc, list(model.wv.index_to_key), n=3, cutoff=0.5)
+            except Exception:
+                suggestions = []
+            suggestion_text = f"；你可能想查：{suggestions}" if suggestions else ""
             return build_model_result(
                 "Word2Vec",
                 False,
-                f"词 '{query_word}' 不在语料库中。可用的词包括：{available_words}",
+                f"词 '{query_word}' 不在语料库中。可用的词包括：{available_words}{suggestion_text}",
                 user_input=f"query_word={user_word}, corpus_provided={corpus_text is not None}",
                 input_type="text"
             )
         
         # 获取最相似的词
-        similar_words = model.wv.most_similar(query_word.lower(), topn=5)
+        similar_words = model.wv.most_similar(query_word_lc, topn=5)
         
         results = {
             "query_word": query_word,

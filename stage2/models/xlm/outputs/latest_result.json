@@ -5,11 +5,13 @@
     "result": {
         "model_used": "xlm-roberta-base",
         "task": "Cross-lingual Text Similarity",
-        "text1": "The weather is nice",
-        "text2": "天气很好",
-        "similarity_score": 0.9984,
+        "text1": "He said the policy was 'brilliant'",
+        "text2": "他说这个政策“真是太高明了”，结果公司亏损创了新高。",
+        "output": "跨语言语义相似度: 0.9972",
+        "similarity_score": 0.9972,
+        "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
         "note": "Similarity score ranges from -1 to 1 (1 = identical meaning)"
     },
-    "user_input": "The weather is nice | 天气很好",
+    "user_input": "He said the policy was 'brilliant' | 他说这个政策“真是太高明了”，结果公司亏损创了新高。",
     "input_type": "text"
 }

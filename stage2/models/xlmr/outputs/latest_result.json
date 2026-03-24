@@ -8,37 +8,37 @@
         "parameters": "270M",
         "training_data": "2.5TB of filtered CommonCrawl data",
         "task": "多语言掩码语言模型",
-        "input": "今天是一个很<mask>的日子。",
+        "input": "虽然进度并不<mask>，团队还是在最后一周完成了交付。",
         "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
         "predictions": [
             {
                 "rank": 1,
-                "token": "triste",
-                "score": 0.08652832359075546
+                "token": "快",
+                "score": 0.22944723069667816
             },
             {
                 "rank": 2,
-                "token": "special",
-                "score": 0.08353183418512344
+                "token": "理想",
+                "score": 0.21536244451999664
             },
             {
                 "rank": 3,
-                "token": "खास",
-                "score": 0.03324289619922638
+                "token": "高",
+                "score": 0.16141043603420258
             },
             {
                 "rank": 4,
-                "token": "interesting",
-                "score": 0.030285095795989037
+                "token": "顺利",
+                "score": 0.06975225359201431
             },
             {
                 "rank": 5,
-                "token": "importante",
-                "score": 0.02774243988096714
+                "token": "很快",
+                "score": 0.06816009432077408
             }
         ],
         "note": "XLM-R 仅使用大规模单语预训练就达到了超越XLM（使用平行语料）的性能"
     },
-    "user_input": "今天是一个很<mask>的日子。",
+    "user_input": "虽然进度并不<mask>，团队还是在最后一周完成了交付。",
     "input_type": "text"
 }

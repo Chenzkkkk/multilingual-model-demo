@@ -3,10 +3,10 @@
     "success": true,
     "is_placeholder": false,
     "result": {
-        "input": "translate English to Chinese: Hello world",
-        "output": "<extra_id_0>",
+        "input": "translate Chinese to Persian: 这家公司在2024年售出了12540件产品，其中40%来自海外市场。",
+        "output": "<extra_id_0>。",
         "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models"
     },
-    "user_input": "translate English to Chinese: Hello world",
+    "user_input": "translate Chinese to Persian: 这家公司在2024年售出了12540件产品，其中40%来自海外市场。",
     "input_type": "text"
 }

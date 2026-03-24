@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import streamlit as st
 
 project_root = Path(__file__).resolve().parents[2]
@@ -22,7 +23,7 @@ from common.benchmark_utils import (
     load_benchmarks,
 )
 from common.benchmark_runner import MODEL_LABELS, TASK_MODEL_OPTIONS, run_benchmark
-from frontend.ui_components import inject_base_styles, render_page_header
+from frontend.ui_components import apply_matplotlib_chinese_style, inject_base_styles, render_page_header
 
 inject_base_styles()
 
@@ -77,6 +78,97 @@ if st.button("运行官方 benchmark 评测", type="primary", use_container_widt
             max_cases=int(run_max_cases),
         )
         st.session_state["benchmark_report"] = report
+
+st.markdown("### 横向比较（多模型 / 多语言）")
+cmp_col1, cmp_col2, cmp_col3 = st.columns([1.4, 1.6, 1.0])
+with cmp_col1:
+    cmp_task = st.selectbox("对比任务", list(task_types.keys()), format_func=lambda x: task_types[x], key="bench_cmp_task")
+with cmp_col2:
+    cmp_models = st.multiselect(
+        "对比模型（可多选）",
+        options=TASK_MODEL_OPTIONS.get(cmp_task, ["qwen2"]),
+        default=TASK_MODEL_OPTIONS.get(cmp_task, ["qwen2"])[:3],
+        format_func=lambda x: MODEL_LABELS.get(x, x),
+        key="bench_cmp_models",
+    )
+with cmp_col3:
+    cmp_max_cases = st.number_input("每模型样例数", min_value=1, max_value=12, value=4, step=1, key="bench_cmp_n")
+
+cmp_languages = st.multiselect(
+    "对比语言（可多选）",
+    options=["中文", "英文", "波斯语", "阿拉伯语"],
+    default=["中文", "英文", "波斯语"],
+    key="bench_cmp_langs",
+)
+
+if st.button("运行横向比较", use_container_width=True):
+    if not cmp_models:
+        st.warning("请至少选择一个模型")
+    elif not cmp_languages:
+        st.warning("请至少选择一种语言")
+    else:
+        all_reports = []
+        with st.spinner("正在执行横向比较，请稍候"):
+            for lang in cmp_languages:
+                for model in cmp_models:
+                    rep = run_benchmark(
+                        task_name=cmp_task,
+                        model_key=model,
+                        language=lang,
+                        max_cases=int(cmp_max_cases),
+                    )
+                    all_reports.append(rep)
+        st.session_state["benchmark_compare_reports"] = all_reports
+
+cmp_reports = st.session_state.get("benchmark_compare_reports", [])
+if cmp_reports:
+    st.markdown("#### 横向比较结果图")
+    metric_name = cmp_reports[0].get("metric_name", "metric")
+    apply_matplotlib_chinese_style()
+
+    languages = []
+    models = []
+    for rep in cmp_reports:
+        lang = rep.get("language", "")
+        model = rep.get("model_label", rep.get("model_key", ""))
+        if lang not in languages:
+            languages.append(lang)
+        if model not in models:
+            models.append(model)
+
+    score_map = {(rep.get("model_label", rep.get("model_key", "")), rep.get("language", "")): float(rep.get("metric_value", 0.0)) for rep in cmp_reports}
+
+    fig, ax = plt.subplots(figsize=(12.8, 5.4), dpi=120)
+    palette = ["#154c79", "#1f7a8c", "#bf7f2f", "#b23a48", "#4c6a92", "#7a5195"]
+    n = len(models)
+    total_width = 0.8
+    bar_width = total_width / max(n, 1)
+    x = list(range(len(languages)))
+
+    for idx, model in enumerate(models):
+        vals = [score_map.get((model, lang), 0.0) for lang in languages]
+        pos = [xx - total_width / 2 + idx * bar_width + bar_width / 2 for xx in x]
+        bars = ax.bar(pos, vals, width=bar_width * 0.92, label=model, color=palette[idx % len(palette)], edgecolor="#e9edf5", linewidth=1.0)
+        for bar, val in zip(bars, vals):
+            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.008, f"{val:.2f}", ha="center", va="bottom", fontsize=8)
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(languages)
+    ax.set_title(f"多模型多语言横向比较（{metric_name}）")
+    ax.set_ylabel(metric_name)
+    ax.grid(axis="y", linestyle="--", alpha=0.25)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.14), ncol=2, frameon=False)
+    fig.tight_layout()
+
+    st.pyplot(fig, use_container_width=True)
+
+    st.markdown("#### 对比明细")
+    for rep in cmp_reports:
+        st.markdown(
+            f"- 任务: {task_types.get(rep.get('task_name', ''), rep.get('task_name', ''))} | 模型: {rep.get('model_label', rep.get('model_key', ''))} | 语言: {rep.get('language', '')} | {rep.get('metric_name', 'metric')}: {float(rep.get('metric_value', 0.0)):.4f} | 成功调用: {rep.get('call_success', 0)} / {rep.get('num_cases', 0)}"
+        )
 
 report = st.session_state.get("benchmark_report")
 if report:
@@ -189,5 +281,6 @@ with st.expander("课堂演示建议", expanded=False):
 2. 切换到其他语言，对比同一道题的表达形式。
 3. 将题目输入对应模型，比较输出质量。
 4. 归纳不同语言、不同任务上的稳定性差异。
+5. 在“横向比较”模块同时勾选多个模型和语言，得到一张可课堂展示的对比图。
 """
     )

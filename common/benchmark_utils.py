@@ -7,6 +7,29 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 
 
+LANG_ALIASES = {
+    "中文": "中文",
+    "汉语": "中文",
+    "英文": "英文",
+    "英语": "英文",
+    "english": "英文",
+    "波斯语": "波斯语",
+    "波斯語": "波斯语",
+    "波سی": "波斯语",
+    "阿拉伯语": "阿拉伯语",
+    "arabic": "阿拉伯语",
+    "अरबी": "阿拉伯语",
+    "أرديو": "阿拉伯语",
+}
+
+
+def _normalize_lang_name(lang: str) -> str:
+    key = str(lang or "").strip()
+    if not key:
+        return key
+    return LANG_ALIASES.get(key, key)
+
+
 def load_benchmarks() -> Dict[str, Any]:
     """加载 benchmark.json 文件"""
     benchmark_path = Path(__file__).parent / "benchmark.json"
@@ -38,7 +61,9 @@ def get_multilingual_versions(benchmark_item: Dict) -> List[str]:
     if 'examples' in benchmark_item:
         for example in benchmark_item['examples']:
             if 'lang' in example:
-                languages.append(example['lang'])
+                normalized = _normalize_lang_name(example['lang'])
+                if normalized not in languages:
+                    languages.append(normalized)
     
     return languages
 
@@ -47,10 +72,14 @@ def get_example_by_language(benchmark_item: Dict, lang: str) -> Optional[Dict]:
     """
     按语言获取 benchmark 中的特定版本
     """
+    target_lang = _normalize_lang_name(lang)
     if 'examples' in benchmark_item:
         for example in benchmark_item['examples']:
-            if example.get('lang') == lang:
-                return example
+            ex_lang = _normalize_lang_name(example.get('lang', ''))
+            if ex_lang == target_lang:
+                patched = dict(example)
+                patched['lang'] = ex_lang
+                return patched
     return None
 
 

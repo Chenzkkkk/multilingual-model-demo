@@ -8,35 +8,35 @@
             "result": {
                 "model_info": "Word2Vec Skip-gram (Mikolov et al., 2013)",
                 "embedding_type": "Static Word Embeddings",
-                "user_input_word": "cat",
+                "user_input_word": "bank",
                 "results": {
-                    "query_word": "cat",
+                    "query_word": "bank",
                     "embeddings": [
                         {
+                            "word": "risk",
+                            "similarity_score": 0.765609622001648
+                        },
+                        {
+                            "word": "river",
+                            "similarity_score": 0.5362010598182678
+                        },
+                        {
+                            "word": "bird",
+                            "similarity_score": 0.5324020385742188
+                        },
+                        {
                             "word": "sang",
-                            "similarity_score": 0.614375650882721
+                            "similarity_score": 0.4781286120414734
                         },
                         {
-                            "word": "sat",
-                            "similarity_score": 0.3423961102962494
-                        },
-                        {
-                            "word": "song",
-                            "similarity_score": 0.24954791367053986
-                        },
-                        {
-                            "word": "park",
-                            "similarity_score": 0.14175066351890564
-                        },
-                        {
-                            "word": "played",
-                            "similarity_score": 0.11167987436056137
+                            "word": "financial",
+                            "similarity_score": 0.3943096399307251
                         }
                     ],
-                    "vocab_size": 17
+                    "vocab_size": 48
                 }
             },
-            "user_input": "cat",
+            "user_input": "bank",
             "input_type": "text"
         },
         {
@@ -50,15 +50,15 @@
                 "architecture": "Deep bidirectional LSTM language model",
                 "example_demonstration": {
                     "target_word": "bank",
-                    "sentence_1": "i went to the bank",
+                    "sentence_1": "I went to the bank to close my account before lunch.",
                     "sentence_1_meaning": "Financial Institution (金融机构)",
-                    "sentence_2": "i sat on the river bank",
+                    "sentence_2": "The children had a picnic on the river bank after the storm.",
                     "sentence_2_meaning": "River side (河岸)",
                     "embedding_similarity": "虽然都是词 'bank'，但在ELMo中会产生不同的向量，体现了不同的语义"
                 },
                 "impact": "ELMo展示了预训练语言模型能够捕捉语义歧义和语境依赖性，这成为后续BERT等模型的基础。"
             },
-            "user_input": "Sentence 1: i went to the bank | Sentence 2: i sat on the river bank",
+            "user_input": "Sentence 1: I went to the bank to close my account before lunch. | Sentence 2: The children had a picnic on the river bank after the storm.",
             "input_type": "text"
         },
         {
@@ -75,11 +75,11 @@
                     "Feed-Forward Network",
                     "Layer Normalization"
                 ],
-                "user_input": "The quick brown fox jumps over the lazy dog",
+                "user_input": "Despite heavy rain and poor visibility, the rescue team coordinated across three cities and completed evacuation overnight.",
                 "attention_explanation": "Self-Attention allows each token to attend to all other tokens in the sequence, capturing long-range dependencies effectively.",
                 "impact": "Transformer architecture became the foundation for all modern large language models (BERT, GPT, T5, etc.)"
             },
-            "user_input": "The quick brown fox jumps over the lazy dog",
+            "user_input": "Despite heavy rain and poor visibility, the rescue team coordinated across three cities and completed evacuation overnight.",
             "input_type": "text"
         },
         {
@@ -88,37 +88,37 @@
             "is_placeholder": false,
             "result": {
                 "task": "Masked Language Modeling",
-                "input": "The capital of France is [MASK].",
+                "input": "After years of drought, the reservoir is finally [MASK] again.",
                 "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
                 "predictions": [
                     {
                         "rank": 1,
-                        "token": "paris",
-                        "score": 0.41678887605667114
+                        "token": "full",
+                        "score": 0.4416130781173706
                     },
                     {
                         "rank": 2,
-                        "token": "lille",
-                        "score": 0.07141672819852829
+                        "token": "filled",
+                        "score": 0.29452553391456604
                     },
                     {
                         "rank": 3,
-                        "token": "lyon",
-                        "score": 0.06339263916015625
+                        "token": "filling",
+                        "score": 0.016728054732084274
                     },
                     {
                         "rank": 4,
-                        "token": "marseille",
-                        "score": 0.044447556138038635
+                        "token": "drained",
+                        "score": 0.016118910163640976
                     },
                     {
                         "rank": 5,
-                        "token": "tours",
-                        "score": 0.030297188088297844
+                        "token": "empty",
+                        "score": 0.013903136365115643
                     }
                 ]
             },
-            "user_input": "The capital of France is [MASK].",
+            "user_input": "After years of drought, the reservoir is finally [MASK] again.",
             "input_type": "text"
         },
         {
@@ -129,36 +129,36 @@
                 "model_info": "Multilingual BERT (Devlin et al., 2018)",
                 "languages_supported": "100+ languages",
                 "task": "Masked Language Modeling (MLM) - Multilingual",
-                "input": "我们 去 [MASK] 玩。",
+                "input": "这个计划虽然很[MASK]，但只要协作得当，仍有机会完成。",
                 "predictions": [
                     {
                         "rank": 1,
-                        "token": "玩",
-                        "score": 0.4283745288848877
+                        "token": "好",
+                        "score": 0.1956799328327179
                     },
                     {
                         "rank": 2,
-                        "token": "去",
-                        "score": 0.07511531561613083
+                        "token": "快",
+                        "score": 0.11050234735012054
                     },
                     {
                         "rank": 3,
-                        "token": "了",
-                        "score": 0.032305922359228134
+                        "token": "大",
+                        "score": 0.10064289718866348
                     },
                     {
                         "rank": 4,
-                        "token": "来",
-                        "score": 0.029802139848470688
+                        "token": "小",
+                        "score": 0.06342367082834244
                     },
                     {
                         "rank": 5,
-                        "token": "游",
-                        "score": 0.022642992436885834
+                        "token": "少",
+                        "score": 0.06188236176967621
                     }
                 ]
             },
-            "user_input": "我们 去 [MASK] 玩。",
+            "user_input": "这个计划虽然很[MASK]，但只要协作得当，仍有机会完成。",
             "input_type": "text"
         }
     ]

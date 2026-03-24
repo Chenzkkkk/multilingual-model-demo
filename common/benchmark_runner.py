@@ -5,6 +5,17 @@ from dataclasses import dataclass
 from typing import Any, Dict, List
 
 from common.benchmark_utils import get_example_by_language, load_benchmarks
+from stage1.models.bert.run import run_bert
+from stage1.models.elmo.run import run_elmo
+from stage1.models.mbert.run import run_mbert
+from stage1.models.transformer.run import run_transformer
+from stage1.models.word2vec.run import run_word2vec
+from stage2.models.xlm.run import run_xlm
+from stage2.models.xlmr.run import run_xlmr
+from stage3.models.bloom.run import run_bloom
+from stage3.models.mbart.run import run_mbart
+from stage3.models.mt5.run import run_mt5
+from stage3.models.xglm.run import run_xglm
 from stage4.models.aya.run import run_aya
 from stage4.models.llama4.run import run_llama4
 from stage4.models.madlad400.run import run_madlad400
@@ -15,6 +26,8 @@ from stage4.models.qwen3.run import run_qwen3
 from stage4.models.qwen_mt.run import run_qwen_mt
 
 TASK_MODEL_OPTIONS: Dict[str, List[str]] = {
+    "stage1_mask_filling": ["bert", "mbert"],
+    "stage1_word_sense": ["word2vec", "elmo", "transformer"],
     "xnli": ["qwen2", "qwen3", "qwen1", "llama4", "aya"],
     "mgsm": ["qwen2", "qwen3", "qwen1", "llama4", "aya"],
     "xquad": ["qwen2", "qwen3", "qwen1", "llama4", "aya"],
@@ -23,14 +36,25 @@ TASK_MODEL_OPTIONS: Dict[str, List[str]] = {
 }
 
 MODEL_LABELS: Dict[str, str] = {
-    "qwen1": "Qwen1 (qwen-turbo)",
-    "qwen2": "Qwen2 (qwen-plus)",
-    "qwen3": "Qwen3 (qwen-max)",
-    "llama4": "LLaMA4 (AIHubMix)",
-    "aya": "Aya-8B (local)",
-    "nllb": "NLLB-200 (local)",
-    "madlad400": "MADLAD-400 (local)",
-    "qwen_mt": "Qwen-MT (DashScope)",
+    "word2vec": "Word2Vec",
+    "elmo": "ELMo",
+    "transformer": "Transformer",
+    "bert": "BERT",
+    "mbert": "mBERT",
+    "xlm": "XLM",
+    "xlmr": "XLM-R",
+    "mbart": "mBART",
+    "mt5": "mT5",
+    "bloom": "BLOOM",
+    "xglm": "XGLM",
+    "qwen1": "Qwen1",
+    "qwen2": "Qwen2",
+    "qwen3": "Qwen3",
+    "llama4": "LLaMA4",
+    "aya": "Aya",
+    "nllb": "NLLB",
+    "madlad400": "MADLAD-400",
+    "qwen_mt": "Qwen-MT",
 }
 
 LANG_TO_EN = {
@@ -125,6 +149,33 @@ def _char_f1(pred: str, ref: str) -> float:
 
 
 def _invoke_model(model_key: str, prompt: str, task_name: str, target_lang: str = "English") -> Dict[str, Any]:
+    if model_key == "word2vec":
+        return run_word2vec(user_word=(prompt or "").strip().split(" ")[0] if (prompt or "").strip() else None)
+    if model_key == "elmo":
+        text = (prompt or "").strip()
+        if "|" in text:
+            p1, p2 = text.split("|", 1)
+            return run_elmo(user_sentence_1=p1.strip(), user_sentence_2=p2.strip())
+        return run_elmo(user_sentence_1=text, user_sentence_2=text)
+    if model_key == "transformer":
+        return run_transformer(user_input=prompt)
+    if model_key == "bert":
+        return run_bert(user_input=prompt)
+    if model_key == "mbert":
+        return run_mbert(user_input=prompt)
+    if model_key == "xlm":
+        return run_xlm(user_input=prompt)
+    if model_key == "xlmr":
+        xlmr_prompt = prompt if "<mask>" in (prompt or "") else f"{prompt} <mask>"
+        return run_xlmr(user_input=xlmr_prompt)
+    if model_key == "mbart":
+        return run_mbart(user_input=prompt)
+    if model_key == "mt5":
+        return run_mt5(user_input=prompt)
+    if model_key == "bloom":
+        return run_bloom(user_input=prompt)
+    if model_key == "xglm":
+        return run_xglm(user_input=prompt)
     if model_key == "qwen1":
         return run_qwen1(user_input=prompt)
     if model_key == "qwen2":
@@ -150,6 +201,13 @@ def _invoke_model(model_key: str, prompt: str, task_name: str, target_lang: str 
 
 
 def _build_prompt(task_name: str, example: Dict[str, Any]) -> str:
+    if task_name == "stage1_mask_filling":
+        return str(example.get("text", ""))
+    if task_name == "stage1_word_sense":
+        sents = example.get("sentences", [])
+        if isinstance(sents, list) and len(sents) >= 2:
+            return f"{sents[0]} | {sents[1]}"
+        return str(example.get("word", "bank"))
     if task_name == "xnli":
         return (
             "请做自然语言推理任务。只输出一个标签：entailment / contradiction / neutral。\n"
@@ -186,6 +244,19 @@ def _build_prompt(task_name: str, example: Dict[str, Any]) -> str:
 
 
 def _evaluate(task_name: str, output_text: str, example: Dict[str, Any]) -> tuple[float, bool, str]:
+    if task_name == "stage1_mask_filling":
+        gold = str(example.get("expected", "")).strip().lower()
+        out = str(output_text or "").strip().lower()
+        ok = bool(gold) and (gold in out)
+        return (1.0 if ok else 0.0), ok, example.get("expected", "")
+
+    if task_name == "stage1_word_sense":
+        # 该任务主要用于展示语境词义差异，采用可运行性与输出完整度作为演示评分。
+        out = str(output_text or "").strip()
+        ok = len(out) >= 6
+        expected = "两句中同词的语义差异解释"
+        return (1.0 if ok else 0.0), ok, expected
+
     if task_name == "xnli":
         pred = _normalize_label(output_text)
         gold = _normalize_label(example.get("label", ""))

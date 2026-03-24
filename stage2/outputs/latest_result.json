@@ -2,58 +2,20 @@
     "stage": 2,
     "results": [
         {
-            "model": "mBERT (Stage 2)",
-            "success": true,
-            "is_placeholder": false,
-            "result": {
-                "model_info": "Multilingual BERT (2018)",
-                "task": "多语言MLM",
-                "input": "中国的首都是[MASK]。",
-                "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
-                "predictions": [
-                    {
-                        "rank": 1,
-                        "token": "都",
-                        "score": 0.4771682322025299
-                    },
-                    {
-                        "rank": 2,
-                        "token": "市",
-                        "score": 0.10027528554201126
-                    },
-                    {
-                        "rank": 3,
-                        "token": "京",
-                        "score": 0.04381847754120827
-                    },
-                    {
-                        "rank": 4,
-                        "token": "-",
-                        "score": 0.04354635998606682
-                    },
-                    {
-                        "rank": 5,
-                        "token": "省",
-                        "score": 0.03496776521205902
-                    }
-                ]
-            },
-            "user_input": "中国的首都是[MASK]。",
-            "input_type": "text"
-        },
-        {
             "model": "XLM",
             "success": true,
             "is_placeholder": false,
             "result": {
                 "model_used": "xlm-roberta-base",
                 "task": "Cross-lingual Text Similarity",
-                "text1": "The weather is nice",
-                "text2": "天气很好",
-                "similarity_score": 0.9984,
+                "text1": "He said the policy was 'brilliant'",
+                "text2": "他说这个政策“真是太高明了”，结果公司亏损创了新高。",
+                "output": "跨语言语义相似度: 0.9972",
+                "similarity_score": 0.9972,
+                "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
                 "note": "Similarity score ranges from -1 to 1 (1 = identical meaning)"
             },
-            "user_input": "The weather is nice | 天气很好",
+            "user_input": "He said the policy was 'brilliant' | 他说这个政策“真是太高明了”，结果公司亏损创了新高。",
             "input_type": "text"
         },
         {
@@ -66,38 +28,38 @@
                 "parameters": "270M",
                 "training_data": "2.5TB of filtered CommonCrawl data",
                 "task": "多语言掩码语言模型",
-                "input": "今天是一个很<mask>的日子。",
+                "input": "虽然进度并不<mask>，团队还是在最后一周完成了交付。",
                 "cache_dir": "E:\\大数据处理技术\\multilingual-pre-trained\\models",
                 "predictions": [
                     {
                         "rank": 1,
-                        "token": "triste",
-                        "score": 0.08652832359075546
+                        "token": "快",
+                        "score": 0.22944723069667816
                     },
                     {
                         "rank": 2,
-                        "token": "special",
-                        "score": 0.08353183418512344
+                        "token": "理想",
+                        "score": 0.21536244451999664
                     },
                     {
                         "rank": 3,
-                        "token": "खास",
-                        "score": 0.03324289619922638
+                        "token": "高",
+                        "score": 0.16141043603420258
                     },
                     {
                         "rank": 4,
-                        "token": "interesting",
-                        "score": 0.030285095795989037
+                        "token": "顺利",
+                        "score": 0.06975225359201431
                     },
                     {
                         "rank": 5,
-                        "token": "importante",
-                        "score": 0.02774243988096714
+                        "token": "很快",
+                        "score": 0.06816009432077408
                     }
                 ],
                 "note": "XLM-R 仅使用大规模单语预训练就达到了超越XLM（使用平行语料）的性能"
             },
-            "user_input": "今天是一个很<mask>的日子。",
+            "user_input": "虽然进度并不<mask>，团队还是在最后一周完成了交付。",
             "input_type": "text"
         }
     ]

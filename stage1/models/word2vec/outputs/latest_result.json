@@ -5,34 +5,34 @@
     "result": {
         "model_info": "Word2Vec Skip-gram (Mikolov et al., 2013)",
         "embedding_type": "Static Word Embeddings",
-        "user_input_word": "cat",
+        "user_input_word": "bank",
         "results": {
-            "query_word": "cat",
+            "query_word": "bank",
             "embeddings": [
                 {
+                    "word": "risk",
+                    "similarity_score": 0.765609622001648
+                },
+                {
+                    "word": "river",
+                    "similarity_score": 0.5362010598182678
+                },
+                {
+                    "word": "bird",
+                    "similarity_score": 0.5324020385742188
+                },
+                {
                     "word": "sang",
-                    "similarity_score": 0.614375650882721
+                    "similarity_score": 0.4781286120414734
                 },
                 {
-                    "word": "sat",
-                    "similarity_score": 0.3423961102962494
-                },
-                {
-                    "word": "song",
-                    "similarity_score": 0.24954791367053986
-                },
-                {
-                    "word": "park",
-                    "similarity_score": 0.14175066351890564
-                },
-                {
-                    "word": "played",
-                    "similarity_score": 0.11167987436056137
+                    "word": "financial",
+                    "similarity_score": 0.3943096399307251
                 }
             ],
-            "vocab_size": 17
+            "vocab_size": 48
         }
     },
-    "user_input": "cat",
+    "user_input": "bank",
     "input_type": "text"
 }

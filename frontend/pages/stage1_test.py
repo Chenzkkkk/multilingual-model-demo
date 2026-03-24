@@ -8,7 +8,13 @@ if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
 from common.utils import EXAMPLE_INPUTS
-from frontend.ui_components import inject_base_styles, render_model_result, render_page_header
+from frontend.ui_components import (
+    inject_base_styles,
+    render_page_header,
+    render_section_banner,
+    render_stage_benchmark_panel,
+    render_stage_results_dashboard,
+)
 from stage1.demo import run_demo
 
 inject_base_styles()
@@ -21,6 +27,8 @@ render_page_header(
 st.markdown("### 本页测试模型")
 st.markdown("Word2Vec, ELMo, Transformer, BERT, mBERT")
 
+render_section_banner("第一部分：通俗测试与结果展示", "用于课堂演示模型直观输出，输入框可随时改写。")
+
 if st.button("返回第一阶段讲解", use_container_width=False):
     st.switch_page("pages/stage1.py")
 
@@ -28,35 +36,38 @@ models_config = {
     "Word2Vec": {
         "input_type": "word",
         "param_name": "word2vec_word",
-        "default": "cat",
+        "default": "bank",
         "instruction": "输入一个词，查看最相近词。",
         "examples": EXAMPLE_INPUTS.get("word2vec", []),
     },
     "ELMo": {
         "input_type": "dual_sentences",
         "param_names": ["elmo_sent1", "elmo_sent2"],
-        "defaults": ["i went to the bank", "i sat on the river bank"],
+        "defaults": [
+            "I went to the bank to close my account before lunch.",
+            "The children had a picnic on the river bank after the storm.",
+        ],
         "instruction": "输入两句包含同一词的句子，观察词义差异。",
         "examples": EXAMPLE_INPUTS.get("elmo", []),
     },
     "Transformer": {
         "input_type": "text",
         "param_name": "transformer_input",
-        "default": "The quick brown fox jumps over the lazy dog",
+        "default": "Despite heavy rain and poor visibility, the rescue team coordinated across three cities and completed evacuation overnight.",
         "instruction": "输入一句话，查看 Transformer 结果。",
         "examples": [{"lang": "English", "text": "Multi-head attention is useful"}],
     },
     "BERT": {
         "input_type": "text_with_mask",
         "param_name": "bert_input",
-        "default": "The capital of France is [MASK].",
+        "default": "After years of drought, the reservoir is finally [MASK] again.",
         "instruction": "输入包含 [MASK] 的文本。",
         "examples": EXAMPLE_INPUTS.get("bert", []),
     },
     "mBERT": {
         "input_type": "text_with_mask",
         "param_name": "mbert_input",
-        "default": "我们 去 [MASK] 玩。",
+        "default": "这个计划虽然很[MASK]，但只要协作得当，仍有机会完成。",
         "instruction": "输入包含 [MASK] 的多语言文本。",
         "examples": EXAMPLE_INPUTS.get("mbert", []),
     },
@@ -88,7 +99,10 @@ if st.button("运行第一阶段测试", type="primary", use_container_width=Tru
         try:
             results = run_demo(user_inputs)
             st.markdown("### 运行结果")
-            for result in results:
-                render_model_result(result)
+            render_stage_results_dashboard(results, stage_title="stage1")
         except Exception as exc:
             st.error(str(exc))
+
+st.markdown("---")
+render_section_banner("第二部分：Benchmark 测评", "选择任务、模型和语言后，直接得到评测图和明细。")
+render_stage_benchmark_panel(stage_id=1)
